@@ -7,9 +7,11 @@ const prisma = require("./lib/prisma");
 // Middleware to parse JSON bodies (will be useful in later steps)
 app.use(express.json());
 
-// everything under /api/questions
+// Routes
 const questionsRouter = require("./routes/questions");
+const authRouter = require("./routes/auth");
 app.use("/api/questions", questionsRouter);
+app.use("/api/auth", authRouter);
 
 app.use((req, res) => {
   res.json({msg: "Not found"});
